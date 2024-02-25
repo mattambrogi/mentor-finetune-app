@@ -1,0 +1,53 @@
+.Message,
+.Error {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5em;
+  padding: 1em 0;
+
+  &Icon,
+  &IconUser,
+  &IconBot {
+    background-color: rgb(255, 79, 18);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+  }
+
+  &IconUser {
+    background-color: #058ed9;
+  }
+
+  &Icon {
+    position: relative;
+
+    span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #d52941;
+      position: absolute;
+      bottom: -0.25em;
+      right: -0.25em;
+    }
+  }
+
+  &Msg {
+    border: 1px solid #d52941;
+    padding: 0.75em;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.05);
+    font-size: 0.95em;
+  }
+
+  &Content {
+    flex: 1;
+  }
+
+  .BotMessage {
+    color: rgba(8, 8, 8, 0.808);
+  }
+}

@@ -1,0 +1,49 @@
+.Inputarea {
+  width: 95%;
+  max-width: 735px;
+  height: fit-content;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  resize: none;
+  box-sizing: border-box;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.05);
+  position: fixed;
+  bottom: 1.5em;
+
+  textarea {
+    width: 93%;
+    margin-top: 0.25em;
+    outline: none;
+    border: none;
+    height: 5px;
+    max-height: 100px;
+    padding: 0.75em 1em;
+    background-color: transparent;
+    color: #000000;
+    resize: none;
+
+    @media screen and (max-width: 768px) {
+      font-size: 1em;
+    }
+  }
+
+  button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 0.5em;
+    bottom: 0.75em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 768px){
+      bottom: 1.5em;
+    }
+  }
+}
