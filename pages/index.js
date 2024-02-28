@@ -65,7 +65,7 @@ export default function Chat() {
       <div className={styles.ChatShield}></div>
       {!messages.length ? (
         <div className={styles.ChatHeader}>
-          <h2>Mentor Finetune</h2>
+          <h2>Socratune</h2>
           <span>
             An LLM fine-tuned on a curated set of wisdom, advice, and insights.
             <br />
