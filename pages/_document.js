@@ -5,7 +5,7 @@ export default function Document() {
     <Html>
       <Head>
         <link rel="icon" href="/icon.png" type="image/png+xml" />
-        <meta property="og:title" content="Mentor Finetune" key="title" />
+        <meta property="og:title" content="Socratune" key="title" />
         <meta
           property="og:description"
           content="made by mattambrogi"
