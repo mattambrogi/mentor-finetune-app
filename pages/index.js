@@ -14,8 +14,6 @@ export default function Chat() {
     setUserInput(input);
   };
 
-  // Removed typingCompleteHandler since it's no longer needed
-
   const showLastMessageProperly = () => {
     if (messages.length > 0 && messageEndRef.current) {
       messageEndRef.current.scrollIntoView({ behavior: "smooth" });
@@ -28,34 +26,43 @@ export default function Chat() {
 
   const userSubmitHandler = async (event) => {
     event.preventDefault();
-    setProcessing(true); // Start processing
+    setProcessing(true);
+
+    const isFirstMessage = messages.length === 0;
 
     try {
       setMessages((prevMessages) => [
         ...prevMessages,
-        { type: "user", content: userInput },
+        { role: "user", content: userInput },
       ]);
-      setUserInput("");
+      setUserInput('') // needed to clear out input box, will not clear user input for below
+
+      // state update async, can't guarentee messages array will be up to date for api call
+      const updatedMessages = [...messages, { role: "user", content: userInput }];
+
+      console.log(updatedMessages)
 
       const response = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userInput }),
+        body: JSON.stringify({
+          clientMessages: isFirstMessage ? [] : updatedMessages
+        }),
       });
 
       const data = await response.json();
-      const output = data.output;
-      let answer = output;
+      const answer = data.output;
 
       setMessages((prevMessages) => [
         ...prevMessages,
-        { type: "bot", content: answer },
+        { role: "assistant", content: answer },
       ]);
+      setUserInput("");
       setProcessing(false); // Stop processing once the bot's response is received
     } catch (error) {
-      setMessages((prevMessages) => [...prevMessages, { type: "error" }]);
+      setMessages((prevMessages) => [...prevMessages, { role: "error" }]);
       setProcessing(false); // Stop processing on error
     }
   };
@@ -75,12 +82,12 @@ export default function Chat() {
       ) : (
         <div>
           {messages.map((message, index) => (
-            message.type === "error" ? (
+            message.role === "error" ? (
               <Error key={index} />
             ) : (
               <Message
                 key={index}
-                type={message.type}
+                type={message.role}
                 content={message.content}
               />
             )

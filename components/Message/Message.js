@@ -18,7 +18,7 @@ export default function Message({
       <div
         className={[
           styles.MessageContent,
-          type === 'bot' ? styles.BotMessage : styles.UserMessage,
+          type === 'assitant' ? styles.BotMessage : styles.UserMessage,
         ].join(' ')}
       >
         <span>{content}</span>

@@ -5,7 +5,7 @@ function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Mentor Finetune</title>
+        <title>Socratune</title>
         <link rel="icon" href="/icon.png" type="image/svg+xml" />
       </Head>
       <Component {...pageProps} />
