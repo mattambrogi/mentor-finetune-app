@@ -1,7 +1,6 @@
 import OpenAI from "openai";
 const openai = new OpenAI();
 
-// I think can get rid of is first message
 const generateAction = async (req, res) => {
     const { clientMessages } = req.body;
 
