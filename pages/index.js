@@ -48,7 +48,7 @@ export default function Chat() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          clientMessages: isFirstMessage ? [] : updatedMessages
+          clientMessages: updatedMessages
         }),
       });
 
